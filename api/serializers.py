@@ -39,3 +39,10 @@ class StyleConfigSerializer(serializers.ModelSerializer):
         model = StyleConfig
         fields = ['id', 'platform', 'component_type', 'component_name', 'class_names', 'created_at', 'updated_at']
         read_only_fields = ['id', 'user', 'created_at', 'updated_at']
+
+
+class StyleSuggestSerializer(serializers.Serializer):
+    platform=serializers.ChoiceField(choices=['tailwind','bootstrap'],required=True)
+    component_name=serializers.ChoiceField(choices=['layout', 'navigation', 'forms', 'buttons', 'feedback', 'data_display', 'special'], required=True)
+    description=serializers.CharField(max_length=220,required=True)
+    class_names = serializers.CharField(max_length=255, read_only=True)
