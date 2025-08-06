@@ -37,7 +37,7 @@ class StyleConfigSerializer(serializers.ModelSerializer):
             
     class Meta:
         model = StyleConfig
-        fields = ['id', 'platform', 'component_type', 'component_name', 'class_names', 'created_at', 'updated_at']
+        fields = ['id', 'platform', 'component_type', 'component_name', 'class_names', 'created_at', 'updated_at','is_public']
         read_only_fields = ['id', 'user', 'created_at', 'updated_at']
 
 

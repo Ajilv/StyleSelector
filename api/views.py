@@ -97,3 +97,17 @@ class StyleSuggestView(APIView):
                 return 'card p-3'
 
         return 'default-style'
+
+
+class CommunityStyleView(viewsets.ReadOnlyModelViewSet):
+    serializer_class=StyleConfigSerializer
+    permission_classes=[IsAuthenticated]
+    def get_queryset(self):
+        queryset=StyleConfig.objects.filter(is_public=True)
+        platform=self.request.query_params.get('platform')
+        component_type=self.request.query_params.get('component_type')
+        if platform:
+            queryset=queryset.filter(platform=platform)
+        if component_type:
+            queryset=queryset.filter(component_type=component_type)
+        return queryset

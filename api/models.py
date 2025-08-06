@@ -31,6 +31,7 @@ class StyleConfig(models.Model):
     ])
     component_name = models.CharField(max_length=100)
     class_names = models.TextField()
+    is_public=models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
